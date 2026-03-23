@@ -1,8 +1,8 @@
-# BloX Chrome Extension
+# BloX Browser Extension
 
-![BloX Logo](./assets/icon.png) <!-- Replace with your actual icon path -->
+![BloX Logo](./badcases-blox/img/icon128.png) <!-- Replace with your actual icon path -->
 
-**BloX** is a Chrome extension that tracks and showcases users who have blocked you on X (formerly Twitter). It provides a **dark-mode interface**, a Trophy Room for your top blockers, and tools to backup and restore your blocker data.  
+**BloX** is a browser extension that tracks and showcases users who have blocked you on X (formerly Twitter). It provides a **dark-mode interface**, a Trophy Room for your top blockers, and tools to backup and restore your blocker data.  
 
 ---
 
@@ -20,7 +20,7 @@
 - Lookup conversation history with blockers  
 - Add blockers to the **Trophy Room** to showcase top 10 blocks  
 - Backup and restore your blocker list and Trophy Room  
-- Works on both desktop and mobile layouts  
+- Works on both desktop and mobile browsers  
 
 ---
 
