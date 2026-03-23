@@ -6,6 +6,20 @@
 
 ---
 
+## 📖 Table of Contents
+
+- [Key Features](#key-features)  
+- [Screenshots](#screenshots)  
+- [Installation](#installation)  
+- [Usage](#usage)  
+- [Development](#development)  
+- [Contributing](#contributing)  
+- [License](#license)  
+- [Support](#support)  
+- [Changelog](#changelog)  
+
+---
+
 ## Key Features
 
 - Tracks users when a comment from a blocker is encountered  
@@ -22,20 +36,19 @@
 ![Desktop Main Panel](./img/desktop_panel.png)
 
 **Trophy Room (Desktop)**  
-![Desktop Trophy Room](./img/desktop_trophy_settings.png)
+![Desktop Trophy Room](./img/desktop_trophy.png)
 
 **Trophy Room with Settings (Desktop)**  
 ![Desktop Trophy Room Settings](./img/desktop_trophy_settings.png)
 
 **Main Panel (Mobile)**  
-![Desktop Main Panel](./img/mobile_panel.png)
+![Mobile Main Panel](./img/mobile_panel.jpg)
 
 **Trophy Room (Mobile)**  
-![Mobile Trophy Room](./img/mobile_trophy.png)
+![Mobile Trophy Room](./img/mobile_trophy.jpg)
 
 **Trophy Room with Settings (Mobile)**  
-![Mobile Trophy Room](./img/mobile_trophy_settings.png)
-
+![Mobile Trophy Room Settings](./img/mobile_trophy_settings.jpg)
 
 ---
 
@@ -48,4 +61,27 @@
 3. Enable **Developer mode** (toggle top-right)  
 4. Click **Load unpacked** and select the extracted folder from the ZIP  
 
+---
 
+## Usage
+
+- Open the BloX panel from the Chrome toolbar  
+- View users who have blocked you  
+- Add users to your Trophy Room to track top blockers  
+- Use backup and restore to save or reload your data  
+
+---
+
+## Development
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) v20 or higher  
+- npm  
+
+### Setup
+
+```bash
+git clone https://github.com/YOUR_USERNAME/BloX.git
+cd BloX/badcases-blox
+npm ci
