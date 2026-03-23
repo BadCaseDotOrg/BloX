@@ -27,7 +27,7 @@ jobs:
       # Install dependencies
       - name: Install dependencies
         working-directory: ./badcases-blox
-        run: npm ci
+        run: npm install
 
       # Build the extension (outputs to dist/ or similar)
       - name: Build extension
