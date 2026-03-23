@@ -1,0 +1,80 @@
+name: Build, Sign & Release BloX Chrome Extension
+
+on:
+  push:
+    tags:
+      - 'v*'          # Triggers on tags like v1.0.0, v0.5.1-beta, etc.
+
+permissions:
+  contents: write     # Required to create releases & upload assets
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repo
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Setup Node.js (adjust version if your project needs something else)
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      # Install dependencies
+      - name: Install dependencies
+        working-directory: ./badcases-blox
+        run: npm ci
+
+      # Build the extension (outputs to dist/ or similar)
+      - name: Build extension
+        working-directory: ./badcases-blox
+        run: npm run build
+        env:
+          # Add any env vars your build needs (e.g. NODE_ENV=production)
+          NODE_ENV: production
+
+      # Create ZIP (standard for Web Store & unpacked loading)
+      - name: Create ZIP artifact
+        run: |
+          cd badcases-blox
+          # Adjust 'dist' if your build outputs to a different folder
+          if [ -d "dist" ]; then
+            cd dist
+          fi
+          zip -r ../../blox-${{ github.ref_name }}.zip .
+          cd ../..
+
+      # Decode PEM key from secret and save to file
+      - name: Prepare private key for CRX signing
+        run: |
+          echo "${{ secrets.CRX_PRIVATE_KEY_BASE64 }}" | base64 -d > private.pem
+
+      # Pack & sign CRX using reliable action (supports CRX3)
+      - name: Pack and sign CRX
+        uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+        with:
+          zipFilePath: blox-${{ github.ref_name }}.zip
+          crxFilePath: blox-${{ github.ref_name }}.crx
+          privateKeyPath: private.pem
+
+      # Create GitHub Release & upload both files
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            blox-${{ github.ref_name }}.zip
+            blox-${{ github.ref_name }}.crx
+          generate_release_notes: true
+          draft: false               # Set to true if you want to review first
+          prerelease: ${{ contains(github.ref_name, 'beta') || contains(github.ref_name, 'alpha') }}
+          body: |
+            **BloX v${{ github.ref_name }} Release**
+
+            - **ZIP**: For Chrome Web Store submission or "Load unpacked"
+            - **CRX**: Drag-and-drop install (enable Developer mode in chrome://extensions)
+
+            See changelog below for details.
