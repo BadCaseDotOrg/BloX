@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>BloX Trophy Room</title>
+  <link rel="stylesheet" href="trophy.css">
+</head>
+
+<body>
+  <header id="trophyHeaderBar" class="trophyHeaderBar">
+    <h3 id="trophyHeader">BloX Trophy Room</h3>
+
+  </header>
+  <main>
+    <!-- Pending trophies -->
+    <div id="settingsWrapper" class="settingsWrapper">
+      <section id="pendingWrapper" class="pending">
+        <h2>Pending Trophies</h2>
+        <div id="pendingContainer"></div>
+      </section>
+      <section id="roomSettings" class="roomSettings">
+        <h2>Room Settings</h2>
+        <div class="headerControls">
+          <span>Show Last Tweet</span>
+
+          <label class="switch">
+
+            <input type="checkbox" id="headerToggle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <span class="lastTweetInfo">View conversation history from main panel to get last tweet</span>
+        <button id="clearTrophyRoomBtn" class="dangerBtn">Clear All Trophy Users</button>
+      </section>
+      <section class="trashBin">
+        <h2>Trash Bin</h2>
+        <div id="trashDropZone" class="trashDropZone">
+          <img src="img/trash-can.svg" id="trashIcon" class="trashIcon">
+          <p>Drop here to remove user</p>
+        </div>
+      </section>
+    </div>
+    <!-- Podium Top 3 -->
+    <div id="slot-wrapper">
+
+      <section id="podium" class="podium">
+        <div id="trophyWrapper2" class="trophyWrapper">
+          <div class="slot slot2" data-place="2">
+            <div id="trophyContent2" class="trophyContent"></div>
+          </div>
+        </div>
+        <div id="trophyWrapper1" class="trophyWrapper">
+          <div class="slot slot1" data-place="1">
+            <div id="trophyContent1" class="trophyContent"></div>
+          </div>
+        </div>
+        <div id="trophyWrapper3" class="trophyWrapper">
+          <div class="slot slot3" data-place="3">
+            <div id="trophyContent3" class="trophyContent"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Remaining leaderboard -->
+      <section id="leaderboard" class="leaderboard">
+        <div class="slot" data-place="4"></div>
+        <div class="slot" data-place="5"></div>
+        <div class="slot" data-place="6"></div>
+        <div class="slot" data-place="7"></div>
+        <div class="slot" data-place="8"></div>
+        <div class="slot" data-place="9"></div>
+        <div class="slot" data-place="10"></div>
+      </section>
+    </div>
+
+  </main>
+
+  <script src="trophy.js"></script>
+</body>
+
+</html>

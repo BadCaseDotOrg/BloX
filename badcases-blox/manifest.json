@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "BC BloX",
+  "version": "1.0",
+  "permissions": [
+    "storage",
+    "tabs"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {},
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://x.com/*",
+        "*://twitter.com/*"
+      ],
+      "js": [
+        "storage.js",
+        "observer.js",
+        "panel.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["img/*.svg", "img/*.png", "trophy.html",
+      "trophy.css",
+      "trophy.js"],
+      "matches": ["*://x.com/*", "*://twitter.com/*"]
+    }
+  ]
+}

@@ -1,0 +1,512 @@
+/* Base body */
+body {
+  font-family: system-ui;
+  background: #121212;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  width: -webkit-fill-available;
+}
+
+header {
+  padding: 16px;
+  background: #1c1c1c;
+  text-align: center;
+  cursor: pointer;
+}
+
+h1,
+h3 {
+  margin: 0;
+}
+
+main {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.podium {
+  display: flex;
+  justify-content: center;
+}
+/* Podium layout */
+.podium .slot {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.podium .trophyImg {
+  width: 100px;
+  height: auto;
+}
+
+.slot .trophyContent {
+  flex-direction: row;
+  display: flex;
+}
+.slot .trophyContent .nameWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+.podium .trophyContent {
+  width: 150px;
+  height: 300px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.podium .trophyContent .avatarImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 4px;
+}
+
+.slot1 .trophyContent .avatarImg {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 4px;
+  position: absolute;
+  top: 38px;
+}
+.slot1 .trophyContent .nameWrapper {
+  position: absolute;
+  top: 240px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.slot2 .trophyContent .avatarImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 4px;
+  position: absolute;
+  top: 74px;
+}
+.slot2 .trophyContent .nameWrapper {
+  position: absolute;
+  top: 240px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.slot3 .trophyContent .avatarImg {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  margin-bottom: 4px;
+  position: absolute;
+  top: 72px;
+}
+.slot3 .trophyContent .nameWrapper {
+  position: absolute;
+  top: 240px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+.slot {
+  background: #2c2c2c;
+  border-radius: 8px;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4px;
+  cursor: grab;
+  transition: transform 0.2s;
+  text-align: center;
+}
+
+.slot1 {
+  width: 200px;
+  height: 300px;
+}
+.slot1 .trophyContent {
+  width: 200px;
+}
+.slot2,
+.slot3 {
+  width: 150px;
+  height: 300px;
+}
+
+.slot1,
+.slot2,
+.slot3 {
+  background: none;
+}
+.slot img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+/* Display names */
+.slot span {
+  font-weight: bold;
+  font-size: 0.9em;
+  margin-bottom: 2px;
+  text-wrap-mode: nowrap;
+}
+
+.slot small {
+  font-size: 0.8em;
+  color: #ddd;
+}
+
+/* Leaderboard for slots 4-10 */
+.leaderboard {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 32px;
+  justify-self: center;
+  align-items: center;
+}
+
+.leaderboard .slot {
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  width: 250px;
+  height: 50px;
+  padding: 4px 8px;
+}
+
+.leaderboard .slot img {
+  width: 40px;
+  height: 40px;
+  margin-right: 8px;
+}
+
+/* Slot wrapper */
+#slot-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  height: 90dvh;
+  align-items: center;
+}
+
+/* Pending trophies */
+.pending,
+.roomSettings,
+.trashBin {
+  background: #1c1c1c;
+  padding: 16px;
+  border-radius: 8px;
+  width: stretch;
+}
+
+/* Settings wrapper */
+.settingsWrapper {
+  display: none;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+.pending h2,
+.roomSettings h2,
+.trashBin h2 {
+  margin-top: 0;
+}
+.roomSettings {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+}
+#pendingContainer {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pendingSlot {
+  width: 80px;
+  text-align: center;
+  cursor: grab;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pendingSlot img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  margin-bottom: 2px;
+}
+
+.pendingSlot span {
+  font-weight: bold;
+  font-size: 0.8em;
+  margin-bottom: 1px;
+}
+
+.pendingSlot small {
+  font-size: 0.7em;
+  color: #ccc;
+}
+
+/* Hover effect */
+.slot:hover,
+.pendingSlot:hover {
+  transform: scale(1.05);
+}
+/* scrollbar */
+/* For WebKit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* width of vertical scrollbar */
+  height: 10px; /* height of horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e; /* track background (dark) */
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #555;
+  border-radius: 5px;
+  border: 2px solid #1e1e1e;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #888;
+}
+
+/* Optional: for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #555 #1e1e1e;
+}
+
+/* Trophy wrapper */
+.trophyWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  margin: 10px;
+}
+
+/* Tweet scroll wrapper */
+.tweetScrollWrapper {
+  border-radius: 12px 1px 1px 12px;
+  border: 2px solid #555;
+}
+
+/* Header flex */
+.trophyHeaderBar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 0 16px;
+  height: 40px;
+  width: stretch;
+}
+
+/* Controls container */
+.headerControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Icon */
+#helpToggle {
+  width: 22px;
+  height: 22px;
+  margin-right: 8px;
+  background: #555;
+  border-radius: 8px;
+  padding: 4px;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.2s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:checked + .slider:before {
+  transform: translateX(16px);
+}
+
+/* Rounded style */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Prevent browser default behaviors during drag */
+body.dragging {
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Make avatars draggable-friendly */
+.avatarImg {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Make sure iframes don't eat events (stronger than just pointer-events) */
+.tweetScrollWrapper,
+.tweetScrollWrapper iframe {
+  touch-action: none;
+}
+.slot.drop-target {
+  outline: 3px dashed #4ade80;
+  outline-offset: 4px;
+  background-color: rgba(74, 222, 128, 0.12);
+  transition: all 0.15s ease;
+}
+
+/* Critical for mobile – prevent browser stealing the drag */
+body.dragging {
+  touch-action: none !important;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Make sure parents don't clip or interfere */
+.slot,
+.trophyContent,
+.nameWrapper {
+  overflow: visible !important;
+  contain: none;
+}
+
+/* ────────────────────────────────────────────────
+   TRASH BIN DROP ZONE
+   ────────────────────────────────────────────────*/
+.trashDropZone {
+  margin-top: 10px;
+  padding: 16px;
+  border: 2px dashed #aa3333;
+  border-radius: 10px;
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+  min-height: 110px;
+  text-align: center;
+}
+
+.trashDropZone img {
+  width: 42px;
+  opacity: 0.85;
+}
+
+.trashDropZone p {
+  margin: 0;
+  color: #ccc;
+}
+
+.trashDropZone.dragover {
+  background: rgba(255, 60, 60, 0.15);
+  border-color: #ff4444;
+}
+
+/* ────────────────────────────────────────────────
+   CLEAR ALL BUTTON IN SETTINGS
+   ────────────────────────────────────────────────*/
+.dangerBtn {
+  margin-top: 12px;
+  padding: 10px 14px;
+  width: 100%;
+  background: #b61818;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    transform 0.15s ease;
+  text-align: center;
+}
+
+.dangerBtn:hover {
+  background: #d61d1d;
+  transform: scale(1.03);
+}
+
+.dangerBtn:active {
+  background: #8f1313;
+  transform: scale(0.97);
+}
+
+/* Last tweet info */
+.lastTweetInfo {
+  font-style: italic;
+}
