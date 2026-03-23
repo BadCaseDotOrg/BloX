@@ -21,26 +21,19 @@ jobs:
       # Create ZIP from extension files
       - name: Create ZIP artifact
         run: |
-          # If your extension is in a folder, cd into it
-          # If it's in root, REMOVE the cd line below
+          # If your extension is inside a folder, keep this:
           cd badcases-blox
 
           zip -r ../blox-${{ github.ref_name }}.zip . \
-            -x "*.git*" \
-               ".github/*"
+            -x "*.git*" ".github/*"
 
-      # Decode private key from secret
-      - name: Prepare private key for CRX signing
-        run: |
-          echo "${{ secrets.CRX_PRIVATE_KEY_BASE64 }}" | base64 -d > private.pem
-
-      # Build CRX
+      # Pack & sign CRX (uses base64 private key secret)
       - name: Pack and sign CRX
-      uses: cardinalby/webext-buildtools-chrome-crx-action@v2
-      with:
-        zipFilePath: blox-${{ github.ref_name }}.zip
-        crxFilePath: blox-${{ github.ref_name }}.crx
-        privateKey: ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
+        uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+        with:
+          zipFilePath: blox-${{ github.ref_name }}.zip
+          crxFilePath: blox-${{ github.ref_name }}.crx
+          privateKey: ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
 
       # Create GitHub Release
       - name: Create GitHub Release
