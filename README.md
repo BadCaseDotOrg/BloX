@@ -67,14 +67,24 @@
 
 ---
 
-### Firefox Nightly Mobile/Desktop (using CRX Installer)
+### Firefox Nightly Desktop (using CRX Installer)
 
 1. Download the latest CRX release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases)  
 2. Download and install **Firefox Nightly**:  
-   - **Desktop:** [Firefox Nightly for Windows/macOS/Linux](https://www.mozilla.org/firefox/channel/desktop/)  
-   - **Android:** [Firefox Nightly on Google Play](https://play.google.com/store/apps/details?id=org.mozilla.fennec_aurora) or [Nightly APK](https://ftp.mozilla.org/pub/mobile/nightly/latest-mozilla-central-android/)  
+   - **Desktop:** [Firefox Nightly for Windows/macOS/Linux](https://www.mozilla.org/firefox/channel/desktop/)
 3. Install the **CRX Installer** add-on from [Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/crxinstaller/)  
-4. Go to `about:config` in the address bar and disable `xpinstall.signatures.required` to allow unsigned extensions (only if necessary)  
+4. Go to `about:config` in the address bar and disable `xpinstall.signatures.required` to allow unsigned extensions
+5. Open **CRX Installer** from the Firefox extension menu, tap **Choose File**, and select the downloaded CRX file, a prompt will appear to install the extension
+6. The extension will now appear in your add-ons list and is active  
+
+
+### Firefox Nightly Mobile (using CRX Installer)
+
+1. Download the latest CRX release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases)  
+2. Download and install **Firefox Nightly**:  
+   - **Android:** [Firefox Nightly for Developers on Google Play](https://play.google.com/store/apps/details?id=org.mozilla.fenix)
+3. Install the **CRX Installer** add-on from [Mozilla Add-ons](https://addons.mozilla.org/en-US/firefox/addon/crxinstaller/)  
+4. Go to `about:config` in the address bar and disable `xpinstall.signatures.required` to allow unsigned extensions
 5. Open **CRX Installer** from the Firefox extension menu, tap **Choose File**, and select the downloaded CRX file — it will automatically create a `.xpi` file  
 6. Enable the **Debug menu** in Firefox Nightly:  
    - Go to **Settings → About Firefox Nightly**  
