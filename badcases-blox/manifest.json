@@ -9,8 +9,21 @@
   "background": {
     "service_worker": "background.js"
   },
-  "action": {},
-
+  "icons": {
+    "16": "img/icon16.png",
+    "32": "img/icon32.png",
+    "48": "img/icon48.png",
+    "128": "img/icon128.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "img/icon16.png",
+      "32": "img/icon32.png",
+      "48": "img/icon48.png",
+      "128": "img/icon128.png"
+    },
+    "default_title": "Blox by BadCase"
+  },
   "content_scripts": [
     {
       "matches": [
