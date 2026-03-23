@@ -2,7 +2,7 @@
 
 ![BloX Logo](./badcases-blox/img/icon128.png) <!-- Replace with your actual icon path -->
 
-**BloX** is a browser extension that tracks and showcases users who have blocked you on X (formerly Twitter). It provides a **dark-mode interface**, a Trophy Room for your top blockers, and tools to backup and restore your blocker data.  
+**BloX** is a browser extension that tracks and showcases users who have blocked you on X (formerly Twitter). It provides a collapsible interface panel on all X pages, a Trophy Room for your top blockers, and tools to backup and restore your blocker data.  
 
 ---
 
