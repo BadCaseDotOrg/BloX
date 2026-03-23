@@ -3,7 +3,8 @@ name: Build, Sign & Release BloX Chrome Extension
 on:
   push:
     tags:
-      - 'v*'          # Triggers on tags like v1.0.0, v0.5.1-beta, etc.
+      - 'v*'          # Still triggers on git tags like v1.0.0
+  workflow_dispatch:    # ← Add this for manual runs from the website
 
 permissions:
   contents: write     # Required to create releases & upload assets
