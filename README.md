@@ -19,7 +19,7 @@ BloX is a lightweight Chrome extension that [brief description of what it does â
 
 ### From GitHub (Developer Mode)
 
-1. Download the latest ZIP release from [Releases](https://github.com/YOUR_USERNAME/BloX/releases)  
+1. Download the latest ZIP release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases)  
 2. Open Chrome and go to `chrome://extensions/`  
 3. Enable **Developer mode** (top-right toggle)  
 4. Click **Load unpacked** and select the extracted folder from the ZIP  
