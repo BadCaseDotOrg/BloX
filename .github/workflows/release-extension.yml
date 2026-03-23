@@ -1,10 +1,12 @@
 name: Build, Sign & Release BloX Chrome Extension
 
 on:
-  push:
-    tags:
-      - 'v*'
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Tag or version for this release (e.g., v1.0.0)'
+        required: true
+        default: 'v1.0.0'
 
 permissions:
   contents: write
@@ -12,41 +14,40 @@ permissions:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-
     steps:
-      # Checkout repo
+      # 1️⃣ Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Create ZIP from extension files
+      # 2️⃣ Create ZIP artifact
       - name: Create ZIP artifact
         run: |
-          # If your extension is inside a folder, keep this:
-          cd badcases-blox
-
-          zip -r ../blox-${{ github.ref_name }}.zip . \
+          # Adjust folder if your extension is inside a subfolder
+          cd badcases-blox || true
+          zip -r ../blox-${{ github.event.inputs.release_tag }}.zip . \
             -x "*.git*" ".github/*"
 
-      # Pack & sign CRX (uses base64 private key secret)
+      # 3️⃣ Pack & sign CRX
       - name: Pack and sign CRX
         uses: cardinalby/webext-buildtools-chrome-crx-action@v2
         with:
-          zipFilePath: blox-${{ github.ref_name }}.zip
-          crxFilePath: blox-${{ github.ref_name }}.crx
+          zipFilePath: blox-${{ github.event.inputs.release_tag }}.zip
+          crxFilePath: blox-${{ github.event.inputs.release_tag }}.crx
           privateKey: ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
 
-      # Create GitHub Release
+      # 4️⃣ Create GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          tag_name: ${{ github.event.inputs.release_tag }}
           files: |
-            blox-${{ github.ref_name }}.zip
-            blox-${{ github.ref_name }}.crx
+            blox-${{ github.event.inputs.release_tag }}.zip
+            blox-${{ github.event.inputs.release_tag }}.crx
           generate_release_notes: true
           draft: false
-          prerelease: ${{ contains(github.ref_name, 'beta') || contains(github.ref_name, 'alpha') }}
+          prerelease: ${{ contains(github.event.inputs.release_tag, 'beta') || contains(github.event.inputs.release_tag, 'alpha') }}
           body: |
-            **BloX v${{ github.ref_name }} Release**
+            **BloX ${{ github.event.inputs.release_tag }} Release**
 
-            - ZIP: Upload to Chrome Web Store or load unpacked
+            - ZIP: For Chrome Web Store submission or "Load unpacked"
             - CRX: Drag-and-drop install (Developer Mode required)
