@@ -11,12 +11,6 @@
 - [Key Features](#key-features)  
 - [Screenshots](#screenshots)  
 - [Installation](#installation)  
-- [Usage](#usage)  
-- [Development](#development)  
-- [Contributing](#contributing)  
-- [License](#license)  
-- [Support](#support)  
-- [Changelog](#changelog)  
 
 ---
 
@@ -61,27 +55,3 @@
 3. Enable **Developer mode** (toggle top-right)  
 4. Click **Load unpacked** and select the extracted folder from the ZIP  
 
----
-
-## Usage
-
-- Open the BloX panel from the Chrome toolbar  
-- View users who have blocked you  
-- Add users to your Trophy Room to track top blockers  
-- Use backup and restore to save or reload your data  
-
----
-
-## Development
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) v20 or higher  
-- npm  
-
-### Setup
-
-```bash
-git clone https://github.com/YOUR_USERNAME/BloX.git
-cd BloX/badcases-blox
-npm ci
