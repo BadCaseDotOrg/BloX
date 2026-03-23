@@ -33,7 +33,8 @@ jobs:
         with:
           zipFilePath: blox-${{ github.event.inputs.release_tag }}.zip
           crxFilePath: blox-${{ github.event.inputs.release_tag }}.crx
-          privateKey: ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
+          privateKey: |
+            ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
 
       # 4️⃣ Create GitHub Release
       - name: Create GitHub Release
