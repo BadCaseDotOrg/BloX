@@ -60,7 +60,7 @@
 ### Quetta Mobile (Recommended for Mobile)
 
 1. Download the latest ZIP release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases)  
-2. Open **[Quetta Mobile](https://play.google.com/store/apps/details?id=com.quetta.browser)**, go to **Settings → Extensions**, and scroll to the bottom to select **Developer options**
+2. Open **[Quetta Mobile](https://play.google.com/store/apps/details?id=net.quetta.browser)**, go to **Settings → Extensions**, and scroll to the bottom to select **Developer options**
 3. Enable **Developer mode** (toggle in the upper right)  
 4. Tap **(from .zip/.crx/.user.js)** and select the downloaded ZIP file  
 5. The extension will now be installed and appear in your Quetta extensions list  
