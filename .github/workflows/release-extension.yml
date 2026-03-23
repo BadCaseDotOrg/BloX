@@ -15,7 +15,7 @@ jobs:
   build-and-release:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Checkout code
+      # 1️⃣ Checkout repo
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -27,16 +27,20 @@ jobs:
           zip -r ../blox-${{ github.event.inputs.release_tag }}.zip . \
             -x "*.git*" ".github/*"
 
-      # 3️⃣ Pack & sign CRX
+      # 3️⃣ Reconstruct PEM key from secret (preserves line breaks)
+      - name: Reconstruct private key
+        run: |
+          printf "%s" "${{ secrets.CRX_PRIVATE_KEY }}" > private.pem
+
+      # 4️⃣ Pack & sign CRX using the reconstructed key
       - name: Pack and sign CRX
         uses: cardinalby/webext-buildtools-chrome-crx-action@v2
         with:
           zipFilePath: blox-${{ github.event.inputs.release_tag }}.zip
           crxFilePath: blox-${{ github.event.inputs.release_tag }}.crx
-          privateKey: |
-            ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
+          privateKeyPath: private.pem
 
-      # 4️⃣ Create GitHub Release
+      # 5️⃣ Create GitHub Release
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
