@@ -30,7 +30,7 @@ jobs:
       # 3️⃣ Reconstruct PEM key from secret (preserves line breaks)
       - name: Reconstruct private key
         run: |
-          printf "%s" "${{ secrets.CRX_PRIVATE_KEY }}" > private.pem
+          printf "%s" "${{ secrets.CRX_PRIVATE_KEY_BASE64 }}" > private.pem
 
       # 4️⃣ Pack & sign CRX using the reconstructed key
       - name: Pack and sign CRX
