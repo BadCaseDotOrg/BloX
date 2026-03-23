@@ -22,45 +22,18 @@ jobs:
       # 2️⃣ Create ZIP artifact
       - name: Create ZIP artifact
         run: |
+          # Adjust folder if your extension is inside a subfolder
           cd badcases-blox || true
           zip -r ../blox-${{ github.event.inputs.release_tag }}.zip . \
             -x "*.git*" ".github/*"
 
-      # 3️⃣ Pack & sign CRX using inline key
+      # 3️⃣ Pack & sign CRX
       - name: Pack and sign CRX
         uses: cardinalby/webext-buildtools-chrome-crx-action@v2
         with:
           zipFilePath: blox-${{ github.event.inputs.release_tag }}.zip
           crxFilePath: blox-${{ github.event.inputs.release_tag }}.crx
-          privateKey: |
-            -----BEGIN PRIVATE KEY-----
-            MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDYaKa+g7J09we0
-            9k8fvsKaSPu4S3wNy4rSQ3QMwMBkRrUbXbQ05fWQwEQb6grqbRu3iwleC+I0G/HT
-            GPPJwkWCv6RAC5Yf3IaGnZMNCujf8xkcyuAlFf/ZtU92dRK0YN8kNAccn//EiEK7
-            Jv/igwsXXHTagqOZWt6AjQM75f3UJGTGa+TU2I9th08zQTNOz4fDzOtqLQhkjJoa
-            w2YGoDZ4K/s4502+gbDQmsYOQK/6HXf5IKTxvDRT6EfC/5QFkTDh84KMXeWVhzzn
-            iNFMZFjZVA+qoXX3fQXLhAtX7/UIykhdrJUvqgIP92wR2KgVv7RjP2XuYwyf/fQy
-            GMB+m3ulAgMBAAECggEAD/LAbRRcC7Ij04J+aMbAZSnhQR7w/LxGFgJKFGGFHC64
-            zJQ+glJ7IyiELHF2Tfnt+7wHm/JwwGnZy7aQSstiH4Vbh6vC68Su9k85BdJKwKxT
-            6rMJyzngkc0CluaAUyI7d5nM919UNEndbxjr7Se+osFZzDup7lSLxrn9pcWoi+Bi
-            7i4hOCAn0Jh2e8qX78HxUS+98MF0GIveWHnjC8d8WHd/jiq+5p9BJMUiyu7bm9wC
-            iHkKJj0EiCfI8QWir/Dnpwr+ycqIeiMY3NWDZM7QXwOWiasDSLYRBfFg06v6halt
-            7zOgc1nwXU9+KLXbLY7h7mbHZLf0iR5ZADSe0ODmyQKBgQD+/R30rx8D/wwmKU1V
-            YxrkYyAmRiLNrAteA7eGjiS8VXBlssJGz+Ag/r05Bp9wANqgtCDEvbMX+UBlStcm
-            brpTp1eFqXt03OsT603ybXFjbkItHpuVfvG2fpGSqxuOWtzQnt/SXdpk6vbnkAAz
-            hFPqdQV0nc9foTuQ/NnMHohXvQKBgQDZRF18sHi1rSUCkgZu2AHqTfKjDw5AmrEG
-            OAeQq5Bk5YHY7/dOjHU8Vf3aoAztTRhc/QPfBb2C9lc0yGczgVCBWQ2BsBolvJ8F
-            ujt302Vwh/JHMIVNjmB4LhcfiBgrtEBBlKhkQpkMFWm1D+XKvsNyMUr0bc3E0SDc
-            vsYTcw1eCQKBgFpH/Gc56d1cXEzWqs7kvAzJHATxKDlyBMRQxJYbld4o0hbv5+Fy
-            kISeLRkXwzPA2ae0nzWJhPOkCKzUhsDQy5/6y/5DN7b00TbIRVzkaxUtYLjg8W1I
-            +QQIZDpt4t/QRAaJee3d1QmON8VdMvUKkTueG0Ri652MVK7NF8Axv0xxAoGALh7t
-            GYL8nNRcfucwpmcEQRC66RJRHDW6Tm+ma3d/92sg3URTY0E9wckfUkGXfOhYu6Sa
-            JcW6LQrOCE5iWfShelPFIjqX0lrwBu85oH4nknPJYoNSSNxobhqanf7t4pko6sL7
-            3AynIIGLJvxw81D7fEoqdyi3/YfHShTVR1utAsECgYEA3sw0InRtWrlOEGEFolYk
-            tSqwmwyE08fAbOOAO3OraxcfCv5a+DlqAAUsYMJpZ54ys7Zk3UzYjfirA25oqkIM
-            T5yhoMJaw/D5B/AMNVLVgDl4zgbW6xJcera2lCzMSkDfh8gylqCFJA2Z/9LcBbiL
-            wVNR/qJ/FPTHeS1sxN6e3sQ=
-            -----END PRIVATE KEY-----
+          privateKey: ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
 
       # 4️⃣ Create GitHub Release
       - name: Create GitHub Release
@@ -76,5 +49,5 @@ jobs:
           body: |
             **BloX ${{ github.event.inputs.release_tag }} Release**
 
-            - ZIP: For Chrome Web Store submission or "Load unpacked"
-            - CRX: Drag-and-drop install (Developer Mode required)
+            - ZIP: For Chrome Desktop "Load unpacked" and Quetta Mobile
+            - CRX: For Firefox Desktop and FireFox Nightly Mobile via CRX Installer
