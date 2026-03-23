@@ -1,25 +1,51 @@
 # BloX Chrome Extension
 
-![BloX Logo](./assets/icon.png) <!-- Replace with your icon path -->
+![BloX Logo](./assets/icon.png) <!-- Replace with your actual icon path -->
 
-BloX is a lightweight Chrome extension that [brief description of what it does — e.g., enhances browsing, manages tasks, blocks distractions, etc.]. It supports **developer mode loading** and is prepared for Chrome Web Store submission.  
+**BloX** is a Chrome extension that tracks and showcases users who have blocked you on X (formerly Twitter). It provides a **dark-mode interface**, a Trophy Room for your top blockers, and tools to backup and restore your blocker data.  
 
 ---
 
-## Features
+## Key Features
 
-- Easy-to-use interface
-- Lightweight and fast
-- Works in **Load Unpacked** mode for testing
-- [Add other main features here]
+- Tracks users when a comment from a blocker is encountered  
+- Lookup conversation history with blockers  
+- Add blockers to the **Trophy Room** to showcase top 10 blocks  
+- Backup and restore your blocker list and Trophy Room  
+- Works on both desktop and mobile layouts  
+
+---
+
+## Screenshots
+
+**Main Panel (Desktop)**  
+![Desktop Main Panel](./img/desktop_panel.png)
+
+**Trophy Room (Desktop)**  
+![Desktop Trophy Room](./img/desktop_trophy_settings.png)
+
+**Trophy Room with Settings (Desktop)**  
+![Desktop Trophy Room Settings](./img/desktop_trophy_settings.png)
+
+**Main Panel (Mobile)**  
+![Desktop Main Panel](./img/mobile_panel.png)
+
+**Trophy Room (Mobile)**  
+![Mobile Trophy Room](./img/mobile_trophy.png)
+
+**Trophy Room with Settings (Mobile)**  
+![Mobile Trophy Room](./img/mobile_trophy_settings.png)
+
 
 ---
 
 ## Installation
 
-### From GitHub (Developer Mode)
+### Chrome Desktop
 
-1. Download the latest ZIP release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases)  
-2. Open Chrome and go to `chrome://extensions/`  
-3. Enable **Developer mode** (top-right toggle)  
+1. Download the latest ZIP release from [Releases](https://github.com/YOUR_USERNAME/BloX/releases)  
+2. Open Chrome and navigate to `chrome://extensions/`  
+3. Enable **Developer mode** (toggle top-right)  
 4. Click **Load unpacked** and select the extracted folder from the ZIP  
+
+
