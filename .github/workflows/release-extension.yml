@@ -36,11 +36,11 @@ jobs:
 
       # Build CRX
       - name: Pack and sign CRX
-        uses: cardinalby/webext-buildtools-chrome-crx-action@v2
-        with:
-          zipFilePath: blox-${{ github.ref_name }}.zip
-          crxFilePath: blox-${{ github.ref_name }}.crx
-          privateKeyPath: private.pem
+      uses: cardinalby/webext-buildtools-chrome-crx-action@v2
+      with:
+        zipFilePath: blox-${{ github.ref_name }}.zip
+        crxFilePath: blox-${{ github.ref_name }}.crx
+        privateKey: ${{ secrets.CRX_PRIVATE_KEY_BASE64 }}
 
       # Create GitHub Release
       - name: Create GitHub Release
