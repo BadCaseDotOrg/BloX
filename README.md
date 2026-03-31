@@ -22,7 +22,7 @@
 
 - **Secure Data Portability**: Full backup and restore functionality for your complete blocker list and Trophy Room stats.
 
-- **Platform Compatibility**: Works in both desktop and mobile browsers.
+- **Platform Compatibility**: Optimized for a seamless experience across both desktop and mobile browsers.
 
 ---
 
