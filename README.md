@@ -14,13 +14,15 @@
 
 ---
 
-## Key Features
+- **Real-Time Block Tracking**: Automatically detects and logs encounters whenever a comment from a blocked user is identified.
 
-- Tracks users when a comment from a blocker is encountered  
-- Lookup conversation history with blockers  
-- Add blockers to the **Trophy Room** to showcase your top 10 blocks  
-- Backup and restore your blocker list and Trophy Room  
-- Works on both desktop and mobile browsers  
+- **Conversation Archive**: Instantly lookup and review your full interaction history with blocked users to maintain context.
+
+- **The Trophy Room**: Showcase your "greatest hits" by adding your top 10 most notable blocks to a dedicated hall of fame.
+
+- **Secure Data Portability**: Full backup and restore functionality for your complete blocker list and Trophy Room stats.
+
+- **Platform Compatibility**: Works in both desktop and mobile browsers.
 
 ---
 
