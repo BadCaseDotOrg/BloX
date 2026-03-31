@@ -391,7 +391,7 @@ padding-right: 10px;
 
   panel.innerHTML = `
   <div id="blockHeader" class="header">
-
+    <img style="height: 36px; width:auto; padding-right: 10px;" src="${api.runtime.getURL("img/icon128.png")}">
     <span id="blockTitle">BloX - by BadCase</span>
 
     <div class="buttons">

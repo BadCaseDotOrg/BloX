@@ -1,10 +1,10 @@
 const api = typeof browser !== "undefined" ? browser : chrome;
 
-api.action.onClicked.addListener((tab) => {
-  api.tabs.sendMessage(tab.id, {
-    action: "togglePanel",
-  });
-});
+//api.action.onClicked.addListener((tab) => {
+//  api.tabs.sendMessage(tab.id, {
+//    action: "togglePanel",
+//  });
+//});
 
 api.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if (msg.action === "openTrophyRoom") {
