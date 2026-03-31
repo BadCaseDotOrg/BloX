@@ -53,19 +53,10 @@
 ### Chrome Desktop (Recommended for Desktop)
 
 1. Download the latest ZIP release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases).
-2. Open Chrome and navigate to `chrome://extensions/`.
-3. Enable **Developer mode** (toggle top-right).
-4. Click **Load unpacked** and select the extracted folder from the ZIP.
-
----
-
-### Quetta Mobile (Recommended for Mobile)
-
-1. Download the latest ZIP release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases).
-2. Open **[Quetta Mobile](https://play.google.com/store/apps/details?id=net.quetta.browser)**, go to **Settings → Extensions**, and scroll to the bottom and select **Developer options**.
-3. Enable **Developer mode** (toggle in the upper right).
-4. Tap **(from .zip/.crx/.user.js)** and select the downloaded ZIP file.
-5. The extension will now be installed and appear in your Quetta extensions list.
+2. Unzip the extensions **.zip** file.
+3. Open Chrome and navigate to `chrome://extensions/`.
+4. Enable **Developer mode** (toggle top-right).
+5. Click **Load unpacked** and select the extracted folder from the ZIP.
 
 ---
 
@@ -79,6 +70,56 @@
 5. Open **CRX Installer** from the Firefox extension menu, tap **Choose File**, and select the downloaded CRX file, a prompt will appear to install the extension.
 6. The extension will now appear in your add-ons list and is active.
 
+---
+
+### Edge Canary (Recommended for Mobile)
+
+1. Download the latest **CRX** release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases).
+2. Open **[Edge Canary](https://play.google.com/store/apps/details?id=com.microsoft.emmx.canary)**.
+3. Open the **Settings** menu and select "About Microsoft Edge".
+4. Tap the **version number** at the bottom until a message appears saying that **Developer options** are enabled.
+5. Go back to the **Settings** menu and select **Developer options** at the bottom.
+6. Select **Extension install by crx**.
+7. Press **Choose .crx file** and select the extensions **.crx** file then press **OK**.
+8. Press **Add**, the extension will now be installed and appear in your **Edge Canary** extensions list.
+
+---
+
+### Lemur
+
+1. Download the latest **ZIP** release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases).
+2. Open **[Lemur](https://play.google.com/store/apps/details?id=com.lemurbrowser.exts)**.
+3. Press the **icon with 4 squares** at the bottom of Lemur's screen.
+4. Press **Extensions**.
+5. Toggle **Developer mode** on in the upper right corner.
+6. Press  **Load *.zip/*.crx/*.user.js file.**.
+7. Select the extensions **.zip** file.
+8. The extension will now be installed and appear in your **Lemur** extensions list.
+
+---
+
+### Yandex
+
+1. Download the latest **ZIP** release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases).
+2. Unzip the extensions **.zip** file.
+3. Open **[Yandex](https://play.google.com/store/apps/details?id=com.yandex.browser)** and enter **chrome://extensions** in the address bar.
+4. Toggle **Developer mode** on in the upper right corner.
+5. Press **Load unpacked**.
+6. Select the directory the extension was unzipped to.
+7. Press **Accept**.
+8. The extension will now be installed and appear in your **Yandex** extensions list.
+
+---
+
+### Quetta Mobile
+
+1. Download the latest ZIP release from [Releases](https://github.com/BadCaseDotOrg/BloX/releases).
+2. Open **[Quetta Mobile](https://play.google.com/store/apps/details?id=net.quetta.browser)**, go to **Settings → Extensions**, and scroll to the bottom and select **Developer options**.
+3. Enable **Developer mode** (toggle in the upper right).
+4. Tap **(from .zip/.crx/.user.js)** and select the downloaded ZIP file.
+5. The extension will now be installed and appear in your Quetta extensions list.
+
+---
 
 ### Firefox Nightly Mobile (using CRX Installer)
 
@@ -93,4 +134,3 @@
    - Tap the **Firefox logo** multiple times until you see “Debug menu enabled”.
 7. Go back to **Settings → Install extension from file**, and select the `.xpi` file that CRX Installer created.
 8. The extension will now appear in your add-ons list and is active.
-
