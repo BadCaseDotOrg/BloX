@@ -1,67 +1,160 @@
 const processedTweets = new WeakSet();
+function checkReplyOpacity(tweet) {
+  // 1. Find the reply button
+  const replyButton = tweet.querySelector('button[data-testid="reply"]');
+  
+  if (!replyButton) {
+    console.log("Reply button not found.");
+    return;
+  }
 
+  // 2. Target the SVG inside the button
+  const svg = replyButton.querySelector('svg');
+
+  if (svg) {
+    // 3. Get the computed style (what is actually rendered by the browser)
+    const style = window.getComputedStyle(svg);
+    const opacity = style.getPropertyValue("opacity");
+
+    // 4. Compare (note: getComputedStyle returns a string)
+    if (opacity === "0.4") {
+      console.log("%cReply is disabled/dimmed (Opacity: 0.4)", "color: #f59e0b");
+      return true;
+    } else {
+      console.log(`Reply is active (Opacity: ${opacity})`);
+      return false;
+    }
+  }
+}
 function detectBlockedTweet(tweet) {
+  // 1. Initial State & Duplication Check
   if (processedTweets.has(tweet)) return;
   processedTweets.add(tweet);
+
+  console.log(
+    "%c[Detector] Analyzing new tweet...",
+    "color: #3b82f6; font-weight: bold;",
+  );
+
+  // 2. Filter: Rule Violations
   const isRuleViolation = tweet.querySelector('[aria-live="polite"]');
+  if (isRuleViolation) {
+    console.log(
+      "  ↳ %cSkipped: Rule violation notice detected.",
+      "color: #94a3b8;",
+    );
+    return;
+  }
 
-  if (isRuleViolation) return;
-
-  // Match any URL that ends with /superfollows/subscribe
+  // 3. Filter: Subscriptions
   const isSubscription = tweet.querySelector(
     '[href$="/superfollows/subscribe"]',
   );
+  if (isSubscription) {
+    console.log(
+      "  ↳ %cSkipped: Subscription/SuperFollows tweet.",
+      "color: #94a3b8;",
+    );
+    return;
+  }
 
-  if (isSubscription) return;
-
+  // 4. Filter: Visibility Limited
   const hasVisibilityLimited = tweet.textContent.includes("Visibility limited");
+  if (hasVisibilityLimited) {
+    console.log(
+      "  ↳ %cSkipped: 'Visibility limited' notice.",
+      "color: #94a3b8;",
+    );
+    return;
+  }
 
-  if (hasVisibilityLimited) return;
-
+  // 5. Core Detection: Disabled Retweet (The "Blocked" Indicator)
   const disabledRetweet = tweet.querySelector(
     'button[data-testid="retweet"][aria-disabled="true"]',
   );
-  if (!disabledRetweet) return;
+  if (disabledRetweet) {
+    const disabledReply = checkReplyOpacity(tweet);
+    if (!disabledReply) {
+      // If we're here, it's just a normal tweet
+      return;
+    }
+  }
+  if (!disabledRetweet) {
+    // If we're here, it's just a normal tweet
+    return;
+  }
 
-  // Get profile link – more robust selectors (avoids status links etc.)
+  console.log(
+    "  ↳ %cDetected: Disabled retweet button found.",
+    "color: #ef4444; font-weight: bold;",
+  );
+
+  // 6. Extraction: Profile Link / Username
   let profileLink = tweet.querySelector(
     'a[href^="/"][role="link"]:not([href*="/status/"]):not([href*="/hashtag/"]):not([href*="/search"])',
   );
 
   if (!profileLink) {
-    // Fallback for wrapped / deeper structures
     profileLink = tweet.querySelector(
       'a[href^="/"]:has(img[alt*="profile"]), a[href^="/"]:has([data-testid*="avatar"])',
     );
   }
 
-  if (!profileLink) return;
+  if (!profileLink) {
+    console.warn(
+      "  ↳ %cError: Could not find profile link for blocked tweet.",
+      "color: #f59e0b;",
+    );
+    return;
+  }
 
   const href = profileLink.getAttribute("href");
-  if (!href || href === "/" || href.includes("/i/")) return;
+  if (!href || href === "/" || href.includes("/i/")) {
+    console.warn(
+      `  ↳ %cError: Invalid href extracted: "${href}"`,
+      "color: #f59e0b;",
+    );
+    return;
+  }
 
   const parts = href.replace(/^\//, "").split("/");
   const username = parts[0]?.toLowerCase();
-  if (!username || username.length < 3) return;
 
-  // Get display name from the next link in the user info
-  let displayName = username; 
+  if (!username || username.length < 3) {
+    console.warn(
+      `  ↳ %cError: Username "${username}" too short or invalid.`,
+      "color: #f59e0b;",
+    );
+    return;
+  }
+
+  // 7. Extraction: Display Name
+  let displayName = username;
   const userNameDiv = tweet.querySelector('div[data-testid="User-Name"]');
   if (userNameDiv) {
     const nameLink = userNameDiv.querySelector('a, span[dir="auto"]');
     if (nameLink) displayName = nameLink.innerText.trim();
   }
 
-  // Extract avatar
+  // 8. Extraction: Avatar & Storage
   let avatar = extractAvatarFromTweet(tweet, username);
 
-  // If avatar is lazy-loading, you can still observe changes
+  console.log(`  ↳ %cTarget: @${username} (${displayName})`, "color: #10b981;");
+
   if (avatar && !isPlaceholderSrc(avatar)) {
+    console.log(
+      `  ↳ %cSuccess: Saving to storage. Avatar URL found.`,
+      "color: #10b981;",
+    );
     BlockStorage.save(username, avatar, displayName);
-    return; // done!
+    return;
   }
 
-  // If not ready → set up observer for lazy load / hydration changes
+  // 9. Observer Fallback
+  console.log(
+    "  ↳ %cAction: Avatar missing or lazy-loading. Starting observer...",
+    "color: #8b5cf6;",
+  );
   observeAvatarChanges(tweet, username, displayName);
 }
 
