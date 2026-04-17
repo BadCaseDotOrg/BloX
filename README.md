@@ -14,6 +14,8 @@
 
 ---
 
+## Key Features
+
 - **Real-Time Block Tracking**: Automatically detects and logs encounters whenever a comment from a blocked user is identified.
 
 - **Conversation Archive**: Instantly lookup and review your full interaction history with blocked users to maintain context.
